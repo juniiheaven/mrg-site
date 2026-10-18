@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="MRG Match Racing Gallop — 3D 스캔 설계 티타늄 캣백 배기. 서울·경기 공식 장착점 웅샵.">
+<meta property="og:title" content="MRG 티타늄 배기">
+<meta property="og:description" content="단순히 배기를 만드는 것이 아닙니다. MRG는 퍼포먼스의 기준을 만듭니다.">
+<meta property="og:image" content="web/g/hero_bw.webp">
+<link rel="icon" href="web/mrg-logo-official.png">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>MRG 티타늄 배기</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 티타늄 쇼룸. 상단 고정 섹션 메뉴로 이동, 섹션은 짧게.
+   열변색 그라데이션(골드→코발트)이 시그니처, 샴페인은 버튼과 강조, 블루는 조명에만. */
+:root{
+  --bg:#060607; --panel:#0c0d0f; --panel2:#121417; --line:rgba(232,230,225,.10); --line2:rgba(232,230,225,.2);
+  --fg:#ece9e3; --muted:#8f8c86; --dim:#5d5b57;
+  --ti:#cfd0cb; --champ:#d8ba7e; --blue:#4d8dff; --red:#d6282e;
+  --heat:linear-gradient(90deg,#c9a24a 0%,#e2c98f 24%,#9aa6c8 52%,#3f63c4 78%,#cfd0cb 100%);
+  --metal:linear-gradient(100deg,#f6f5f1 0%,#b9bcb8 36%,#efefeb 58%,#9a9d9a 100%);
+  --wide:"Syncopate","Noto Sans KR",sans-serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --navh:104px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:var(--navh)}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:700}
+:focus-visible{outline:1px solid var(--red);outline-offset:4px}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.h2{font-family:var(--wide);font-weight:700;font-size:clamp(22px,3.2vw,38px);line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
+.ko2{font-weight:900;font-size:clamp(22px,2.6vw,30px);line-height:1.35;letter-spacing:-.015em;margin-top:10px}
+.sec{padding-block:88px;border-top:1px solid var(--line)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:16px 60px;align-items:end;margin-bottom:40px}
+.head p{margin:0;color:var(--muted);max-width:32em}
+
+/* header + section nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(6,6,7,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:12px}
+.hlogo{height:26px;width:auto}
+.secnav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{flex:none;font-size:13.5px;font-weight:500;color:var(--muted);padding:7px 14px;border:1px solid transparent;transition:color .2s,border-color .2s}
+.secnav a:hover{color:var(--fg)}
+.secnav a.on{color:#fff;background:var(--red);border-color:var(--red)}
+.heatline{height:2px;background:linear-gradient(90deg,var(--red) 0%,rgba(214,40,46,.35) 60%,rgba(214,40,46,0) 100%)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:14px;letter-spacing:.03em;padding:12px 22px;border:1px solid var(--red);color:#fff;background:var(--red);transition:background .25s,color .25s,border-color .25s;cursor:pointer;font-family:var(--body)}
+.btn:hover{background:#ef3a40;border-color:#ef3a40}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--fg);color:var(--fg)}
+.top .btn{padding:8px 15px;font-size:13px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;min-height:clamp(560px,78vh,820px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:40px}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:saturate(.85) contrast(1.05)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,6,7,.96) 0%,rgba(6,6,7,.62) 28%,rgba(6,6,7,.04) 58%,rgba(6,6,7,.3) 100%),linear-gradient(90deg,rgba(6,6,7,.55),transparent 50%)}
+.hero .wrap{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:1.35fr 1fr;gap:24px 60px;align-items:end}
+.hero h1{margin-top:16px;font-weight:900;letter-spacing:-.025em}
+.hero h1 .pre{display:block;font-size:clamp(17px,1.7vw,22px);font-weight:400;color:var(--ti);letter-spacing:-.01em;margin-bottom:12px}
+.hero h1 .main{display:block;font-size:clamp(30px,3.7vw,50px);line-height:1.22;max-width:11.5em}
+.hero h1 em{font-style:normal;color:var(--red)}
+.pl{width:0;height:0;border-left:10px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.fsound{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;display:inline-flex;align-items:center;gap:9px;padding:12px 16px;background:var(--red);color:#fff;border:0;font-family:var(--mono);font-size:11px;letter-spacing:.2em;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .25s}
+.fsound.show{opacity:1;pointer-events:auto}
+.hero h1 .ti{background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-side{display:grid;gap:20px;min-width:0}
+.hero-side p{margin:0;color:#c2beb7;font-size:15.5px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.credit{position:absolute;right:max(20px,env(safe-area-inset-right,0px));top:16px;z-index:1;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:rgba(236,233,227,.55)}
+
+/* stage */
+.stage{position:relative;min-width:0}
+.stage::before{content:"";position:absolute;left:6%;right:6%;bottom:0;height:50%;background:radial-gradient(50% 60% at 50% 72%,var(--glow,rgba(200,205,215,.22)),transparent 72%);filter:blur(34px)}
+.stage::after{content:"";position:absolute;left:16%;right:16%;bottom:0;height:1px;background:var(--metal);opacity:.6}
+.stage img{position:relative;width:100%;height:clamp(300px,38vw,460px);object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.85))}
+
+/* main models */
+.picker{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px}
+.pick{font-family:var(--wide);font-weight:700;font-size:14px;letter-spacing:.06em;background:transparent;color:var(--muted);border:1px solid var(--line2);padding:10px 18px;cursor:pointer;transition:all .2s}
+.pick:hover{color:var(--fg)}
+.pick[aria-pressed="true"]{color:var(--bg);background:var(--fg);border-color:var(--fg)}
+.pick.por[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.model{display:grid;grid-template-columns:1.2fr 1fr;gap:32px 64px;align-items:center}
+.model .brandtag{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--red);text-transform:uppercase}
+.model .brandtag::before{content:"";width:22px;height:1px;background:var(--red)}
+.model h3{font-family:var(--wide);font-weight:700;font-size:clamp(40px,6vw,76px);line-height:1;letter-spacing:.02em;margin:14px 0 8px}
+.model .chassis{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--muted)}
+.model p.desc{color:#b8b4ad;margin:20px 0 22px;max-width:30em}
+.spec{margin:0;border-top:1px solid var(--line2)}
+.spec div{display:grid;grid-template-columns:100px 1fr;gap:16px;padding-block:11px;border-bottom:1px solid var(--line);font-size:15px}
+.spec dt{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;padding-top:4px}
+.spec dd{margin:0;font-weight:400}
+.pricebox{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:22px}
+.tprice .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--muted)}
+.tprice .v{font-family:var(--wide);font-weight:700;font-size:clamp(26px,3vw,36px);letter-spacing:.02em;line-height:1.25;background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tprice .v small{font-family:var(--body);font-size:14px;font-weight:500;-webkit-text-fill-color:var(--muted);margin-left:4px}
+.tprice .alt{font-size:13px;color:var(--muted)}
+.info{min-width:0}
+.snd{margin:0 0 22px;display:grid;gap:8px}
+.sp{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:center;padding:12px 14px;border:1px solid var(--line2);background:var(--panel);transition:border-color .2s}
+.sp.on{border-color:var(--red)}
+.play{width:46px;height:46px;border-radius:50%;border:1px solid var(--red);background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.play .ic{width:0;height:0;border-left:13px solid var(--red);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px}
+.sp.on .play{background:var(--red)}
+.sp.on .play .ic{width:12px;height:14px;margin:0;border:0;border-left:4px solid #fff;border-right:4px solid #fff}
+.sw{min-width:0}
+.lb{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--ti);margin-bottom:6px}
+.lb .tm{color:var(--muted);font-variant-numeric:tabular-nums}
+.bars{display:flex;align-items:center;gap:2px;height:32px}
+.bars i{flex:1;min-width:1px;background:rgba(232,230,225,.18);border-radius:1px;min-height:3px}
+.sp.on .bars i{background:rgba(232,230,225,.32)}
+.bars i.f,.sp.on .bars i.f{background:var(--red)}
+.snd-note{font-size:12px;color:var(--dim)}
+.stage img{transition:opacity .5s,filter .5s}
+.stage .sv{position:absolute;z-index:2;left:50%;top:50%;height:100%;width:auto;aspect-ratio:9/16;max-width:100%;object-fit:cover;background:#000;border:1px solid var(--line2);opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.97);transition:opacity .5s,transform .5s}
+.stage.vid .sv{opacity:1;transform:translate(-50%,-50%)}
+.stage.vid img{opacity:.15;filter:blur(3px)}
+@keyframes pulse{50%{opacity:.45}}
+.sp.ld .play{animation:pulse 1s infinite}
+.installs{margin-top:26px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.strip img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line)}
+
+/* why */
+.why .pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.pillar.wide{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.35fr;gap:32px;align-items:center}
+.pillar.wide::after,.pillar.tit::after{display:none}
+.scanfig{margin:0;border:1px solid var(--line2);background:#dfe1e2;min-width:0}
+.scanfig img{width:100%;display:block}
+.scanfig figcaption{background:var(--bg);padding:10px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted)}
+.pillar.val .big{color:var(--red)}
+.pillar{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);padding:34px 32px;min-width:0}
+.pillar .big{font-family:var(--wide);font-weight:700;font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:.02em}
+.pillar.scan .big{color:var(--fg)}
+.pillar.tit .big{background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pillar h3{font-size:20px;font-weight:900;margin:18px 0 8px}
+.pillar p{margin:0;color:#b8b4ad;font-size:15px;max-width:30em}
+.pillar.scan::after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;background:repeating-linear-gradient(0deg,rgba(207,208,203,.09) 0 1px,transparent 1px 14px),repeating-linear-gradient(90deg,rgba(207,208,203,.09) 0 1px,transparent 1px 14px);mask-image:radial-gradient(circle,black 30%,transparent 70%);-webkit-mask-image:radial-gradient(circle,black 30%,transparent 70%)}
+.pillar.tit::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:conic-gradient(from 200deg,#c9a24a,#e2c98f,#9aa6c8,#3f63c4,#c9a24a);opacity:.18;filter:blur(8px)}
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+.cmp th,.cmp td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp tr:last-child td{border-bottom:0}
+.cmp thead th{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.cmp thead th.m{color:var(--red)}
+.cmp td.k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--muted);width:120px;text-transform:uppercase;padding-top:19px}
+.cmp td.o{color:var(--muted)}
+.cmp td.m{font-weight:500;color:var(--fg)}
+.cmp td.m::before{content:"";display:inline-block;width:6px;height:6px;background:var(--red);margin-right:10px;vertical-align:3px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.opts span{font-size:14px;border:1px solid var(--line2);padding:7px 14px;color:var(--ti)}
+.opts b{font-family:var(--wide);font-size:12px;color:var(--red);margin-right:6px}
+
+/* lineup */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.tab{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:transparent;color:var(--muted);border:1px solid var(--line2);padding:9px 15px;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0;transition:border-color .3s}
+.card:hover{border-color:rgba(214,40,46,.55)}
+.card.feat{border-color:rgba(214,40,46,.4)}
+.card .ph{aspect-ratio:4/3;position:relative;background:radial-gradient(55% 45% at 50% 66%,rgba(201,162,74,.12),transparent 72%)}
+.card .ph img{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:contain;filter:drop-shadow(0 16px 20px rgba(0,0,0,.75))}
+.card .ph .tbd{position:absolute;inset:0;display:grid;place-items:center}
+.card .flag{position:absolute;top:10px;left:10px;z-index:1;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;padding:3px 7px;border:1px solid var(--red);color:var(--red)}
+.card .bd{padding:14px 16px 16px;border-top:1px solid var(--line);display:grid;gap:10px}
+.card .mk{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.card h3{font-family:var(--wide);font-size:15px;letter-spacing:.04em;line-height:1.3;margin-top:4px;text-transform:uppercase}
+.card .pr{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
+.card .pr .t{font-family:var(--wide);font-weight:700;font-size:18px;color:var(--fg);font-variant-numeric:tabular-nums}
+.card .pr .t small{font-family:var(--body);font-weight:400;font-size:12px;color:var(--muted);margin-left:2px}
+.card .pr .s{font-size:12.5px;color:var(--muted);text-align:right}
+.card .pr .k{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--dim)}
+.note{color:var(--dim);font-size:13px;margin-top:18px}
+details.more{margin-top:28px;border:1px solid var(--line);background:var(--panel)}
+details.more summary{cursor:pointer;padding:18px 22px;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::after{content:"+";font-family:var(--mono);color:var(--red);font-size:18px;line-height:1}
+details.more[open] summary::after{content:"−"}
+.brands{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.brand{background:var(--panel);padding:18px 22px 20px;min-width:0}
+.brand h4{margin:0;font-family:var(--wide);font-size:11.5px;letter-spacing:.14em;color:var(--red);text-transform:uppercase}
+.brand p{margin:8px 0 0;font-size:14px;color:#b8b4ad;line-height:1.75}
+
+/* gallery */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(140px,15vw,210px);gap:10px}
+.mosaic figure{margin:0;position:relative;overflow:hidden;background:var(--panel);min-width:0}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.mosaic figure:hover img{transform:scale(1.04)}
+.mosaic figcaption{position:absolute;left:0;bottom:0;width:100%;padding:22px 12px 9px;background:linear-gradient(0deg,rgba(6,6,7,.82),transparent);font-family:var(--mono);font-size:10px;letter-spacing:.16em}
+.m-a{grid-column:span 2;grid-row:span 2}.m-b{grid-column:span 2}
+.mosaic .work{background:var(--panel);display:block}
+.mosaic .work img{object-fit:contain;padding:14px}
+
+/* dealer */
+.dealer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.box{background:var(--panel);border:1px solid var(--line);padding:30px 28px;min-width:0}
+.box .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--red);text-transform:uppercase}
+.box h3{font-size:clamp(22px,2.6vw,30px);font-weight:900;line-height:1.3;margin:12px 0 8px;letter-spacing:-.01em}
+.box > p{color:var(--muted);margin:0 0 18px;font-size:15px}
+.rows{display:grid;border-top:1px solid var(--line2);margin-bottom:22px}
+.row{display:flex;align-items:center;gap:14px;padding-block:12px;border-bottom:1px solid var(--line);min-width:0}
+.row .label{flex:none;width:80px}
+.row .v{flex:1;font-weight:500;overflow-wrap:anywhere;min-width:0}
+.copy{font-family:var(--mono);font-size:10px;letter-spacing:.14em;background:transparent;color:var(--muted);border:1px solid var(--line2);padding:5px 9px;cursor:pointer;flex:none}
+.copy:hover{color:var(--red);border-color:var(--red)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0 0 40px;padding:0;list-style:none;counter-reset:s;grid-column:1/-1}
+.steps li{position:relative;padding:22px 22px 0 0;border-top:1px solid var(--line2);min-width:0}
+.steps li::before{counter-increment:s;content:"0" counter(s);position:absolute;top:-1px;left:0;width:40px;border-top:1px solid var(--red);padding-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--red)}
+.steps h4{margin:14px 0 6px;font-size:16.5px;font-weight:700}
+.steps p{margin:0;color:var(--muted);font-size:14px}
+
+.totop{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;width:46px;height:46px;display:grid;place-items:center;background:rgba(12,13,15,.9);border:1px solid var(--line2);color:var(--red);font-family:var(--mono);font-size:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+.totop.show{opacity:1;pointer-events:auto}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--dim);font-size:12.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+footer img{height:20px;width:auto;opacity:.7}
+
+
+/* ignition */
+.hero .wrap{grid-template-columns:1.35fr 1fr auto}
+.ign-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;justify-self:end}
+.ign{position:relative;width:132px;height:132px;border:0;background:transparent;padding:0;cursor:pointer;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.ign svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ign .trk{fill:none;stroke:rgba(232,230,225,.22);stroke-width:1.2}
+.ign .prog{fill:none;stroke:var(--red);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:round}
+.ign .inner{fill:rgba(6,6,7,.55);stroke:rgba(232,230,225,.12);stroke-width:1}
+.ign .ig-ic{position:absolute;left:50%;top:50%;transform:translate(-35%,-50%);width:0;height:0;border-left:18px solid var(--fg);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.ign.on .ig-ic{transform:translate(-50%,-50%);width:16px;height:20px;border:0;border-left:5px solid var(--fg);border-right:5px solid var(--fg)}
+.ign:hover .trk{stroke:rgba(232,230,225,.4)}
+.ign.on{filter:drop-shadow(0 0 22px rgba(214,40,46,.45))}
+.ign-t{text-align:center;display:grid;gap:2px}
+.ign-t b{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.24em;color:var(--fg)}
+.ign-t span{font-size:12.5px;color:var(--muted)}
+.hero .wrap.herowave-w{display:block;position:relative;z-index:1;width:100%;margin-top:34px}
+.herowave{display:flex;align-items:center;gap:2px;height:30px}
+.herowave i{flex:1;min-width:1px;background:rgba(232,230,225,.22);min-height:2px}
+.herowave i.f{background:var(--red)}
+.hw-t{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--dim);margin-top:8px}
+/* blueprint */
+.bp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.3fr);gap:36px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:34px 32px;margin-bottom:14px}
+.bp-txt .big{font-family:var(--wide);font-weight:700;font-size:clamp(40px,5vw,64px);line-height:1}
+.bp-txt h3{font-size:20px;font-weight:900;margin:16px 0 8px}
+.bp-txt p{margin:0;color:#b8b4ad;font-size:15px}
+.bp-steps{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:2px}
+.bp-steps li{display:flex;gap:12px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line);color:var(--dim);font-size:14.5px;transition:color .3s}
+.bp-steps li b{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.14em}
+.bp-steps li.on{color:var(--fg)}
+.bp-steps li.on b{color:var(--red)}
+.bp-fig{margin:0;min-width:0}
+
+.bp-lines .ln,.bp-lines .ln2{stroke:var(--red);stroke-width:8;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px rgba(214,40,46,.55))}
+.bp-lines .part{stroke:var(--red);stroke-width:2.5;opacity:0;transition:opacity .5s}
+.bp-lines .part.on{opacity:1}
+.bp-fig figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted);margin-top:10px}
+/* heat */
+.heat-stage{position:relative;max-width:980px;margin:0 auto}
+.heat-stage::before{content:"";position:absolute;left:12%;right:12%;bottom:4%;height:40%;background:radial-gradient(50% 60% at 50% 70%,var(--hg,rgba(200,205,215,.18)),transparent 72%);filter:blur(34px)}
+.heat-stage canvas{position:relative;width:100%;height:auto;display:block;filter:drop-shadow(0 30px 40px rgba(0,0,0,.85))}
+.heat-ctl{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;max-width:760px;margin:30px auto 10px}
+#heat-r{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:linear-gradient(90deg,#c9cbc7,#d6ae5c 35%,#8a63a8 62%,#3e5fbf 100%);outline:none;cursor:pointer}
+#heat-r::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--fg);border:3px solid var(--red);cursor:pointer}
+#heat-r::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--fg);border:3px solid var(--red);cursor:pointer}
+/* quote */
+.q-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;align-items:start}
+.q-steps{display:grid;gap:12px}
+.q-step{margin:0;border:1px solid var(--line);background:var(--panel);padding:18px 20px 20px}
+.q-step legend{padding:0 8px;margin-left:-8px;font-weight:700;font-size:15px}
+.q-step legend b{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.14em;color:var(--red);margin-right:10px}
+.q-opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.q-opts button{font-family:var(--body);font-size:13.5px;background:transparent;color:var(--ti);border:1px solid var(--line2);padding:8px 13px;cursor:pointer;transition:all .15s}
+.q-opts button:hover{color:var(--fg);border-color:var(--fg)}
+.q-opts button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.q-opts .grp{width:100%;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim);margin:6px 0 0}
+.q-sum{position:sticky;top:calc(var(--navh) + 16px);background:var(--panel2);border:1px solid var(--line2);padding:24px 22px}
+.q-car{font-family:var(--wide);font-weight:700;font-size:20px;letter-spacing:.03em;margin:8px 0 14px;text-transform:uppercase}
+.q-spec{margin:0;border-top:1px solid var(--line)}
+.q-spec div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.q-spec dt{color:var(--muted)}.q-spec dd{margin:0;font-weight:500}
+.q-price{margin-top:16px}
+.q-pv{font-family:var(--wide);font-weight:700;font-size:30px;margin-top:4px;background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent}
+.q-pv small{font-family:var(--body);font-size:14px;-webkit-text-fill-color:var(--muted);margin-left:4px}
+.q-pn{font-size:12.5px;color:var(--dim);margin-top:4px}
+#q-msg{width:100%;margin-top:8px;background:var(--bg);color:var(--ti);border:1px solid var(--line2);padding:12px;font-family:var(--body);font-size:13.5px;line-height:1.6;resize:none}
+.q-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.q-ph{margin-top:12px;font-size:13px;color:var(--muted)}
+/* A/B */
+.ab{display:inline-flex;border:1px solid var(--line2);margin-bottom:4px}
+.ab button{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;padding:7px 12px;background:transparent;color:var(--muted);border:0;cursor:pointer}
+.ab button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.ab button:disabled{cursor:not-allowed;opacity:.55}
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .ign-wrap{flex-direction:row;justify-self:start;gap:18px}
+  .ign{width:96px;height:96px}
+  .ign-t{text-align:left}
+  .bp,.q-grid{grid-template-columns:1fr}
+  .bp{padding:24px 18px}
+  .q-sum{position:static}
+}
+
+
+/* engine start */
+.hero .wrap{grid-template-columns:1.35fr 1fr auto}
+.es-wrap{justify-self:end;padding:30px}
+.es{position:relative;width:200px;height:200px;border-radius:50%;cursor:pointer;background:radial-gradient(circle at 50% 30%,#232327 0%,#111114 55%,#09090b 100%);border:3px solid var(--red);box-shadow:0 0 0 12px rgba(6,6,7,.45),0 0 0 13px rgba(232,230,225,.14),0 0 70px rgba(214,40,46,.35),inset 0 2px 12px rgba(255,255,255,.06),inset 0 -10px 30px rgba(0,0,0,.6);transition:transform .15s,box-shadow .3s}
+.es:active{transform:scale(.97)}
+.es:hover{box-shadow:0 0 0 12px rgba(6,6,7,.45),0 0 0 13px rgba(232,230,225,.25),0 0 90px rgba(214,40,46,.5),inset 0 2px 12px rgba(255,255,255,.08),inset 0 -10px 30px rgba(0,0,0,.6)}
+.es-ticks{position:absolute;inset:-34px;border-radius:50%;background:repeating-conic-gradient(rgba(232,230,225,.4) 0 .9deg,transparent .9deg 6deg);-webkit-mask:radial-gradient(circle,transparent 63%,#000 64%,#000 68%,transparent 69%);mask:radial-gradient(circle,transparent 63%,#000 64%,#000 68%,transparent 69%);pointer-events:none}
+.es-t{position:relative;display:grid;gap:0;place-items:center}
+.es-t b{font-family:var(--wide);font-weight:700;font-size:26px;letter-spacing:.06em;line-height:1.15;color:var(--fg)}
+.es-t b.r{color:var(--red)}
+.es-t small{margin-top:10px;font-size:11.5px;color:var(--muted)}
+.es.on{animation:esPulse 1.1s ease-in-out infinite}
+@keyframes esPulse{50%{box-shadow:0 0 0 12px rgba(6,6,7,.45),0 0 0 13px rgba(214,40,46,.5),0 0 110px rgba(214,40,46,.65),inset 0 2px 12px rgba(255,255,255,.06),inset 0 -10px 30px rgba(0,0,0,.6)}}
+/* header cart */
+.top-r{display:flex;align-items:center;gap:10px}
+.cartbtn{font-family:var(--mono);font-size:11px;letter-spacing:.18em;background:transparent;color:var(--fg);border:1px solid var(--line2);padding:9px 12px;cursor:pointer}
+.cartbtn span{display:inline-grid;place-items:center;min-width:18px;height:18px;margin-left:6px;background:var(--red);color:#fff;font-size:10px;letter-spacing:0;border-radius:9px;padding:0 5px}
+/* shop */
+.demo-bar{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#fff;background:rgba(214,40,46,.16);border:1px dashed rgba(214,40,46,.6);padding:10px 14px;margin-bottom:34px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:960px){.sgrid{grid-template-columns:1fr 1fr}}
+.sc{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.sc .ph{aspect-ratio:1/1;position:relative;background:radial-gradient(55% 45% at 50% 62%,rgba(200,205,215,.10),transparent 72%)}
+.sc .ph img{position:absolute;inset:22px;width:calc(100% - 44px);height:calc(100% - 44px);object-fit:contain;filter:drop-shadow(0 14px 18px rgba(0,0,0,.7))}
+.sc .bd{padding:14px 16px 16px;border-top:1px solid var(--line);display:grid;gap:8px;flex:1}
+.sc .mk{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--muted)}
+.sc h3{font-size:16px;font-weight:700;line-height:1.4}
+.sc p{margin:0;font-size:13px;color:var(--muted)}
+.sc .pr{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.sc .pr b{font-family:var(--wide);font-size:16px;font-variant-numeric:tabular-nums}
+.sc .pr b small{font-family:var(--body);font-size:11px;font-weight:400;color:var(--dim);margin-left:4px}
+.sc .add{font-size:13px;background:transparent;color:var(--fg);border:1px solid var(--line2);padding:7px 12px;cursor:pointer}
+.sc .add:hover{border-color:var(--red);color:#fff;background:var(--red)}
+/* cart drawer */
+.ovl{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.6);backdrop-filter:blur(3px)}
+.cart{position:fixed;top:0;right:0;bottom:0;z-index:41;width:min(420px,100%);background:var(--panel2);border-left:1px solid var(--line2);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.cart-h{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.cart-h b{font-size:17px}
+.x{background:transparent;border:0;color:var(--fg);font-size:26px;line-height:1;cursor:pointer;padding:0 4px}
+.cart-demo{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:#ff8a8e;background:rgba(214,40,46,.1);padding:8px 22px}
+.cart-list{flex:1;overflow:auto;padding:8px 22px}
+.ci{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.ci img{width:56px;height:56px;object-fit:contain;background:var(--bg)}
+.ci b{display:block;font-size:14px;font-weight:500}
+.ci span{font-size:12.5px;color:var(--muted)}
+.qty{display:flex;align-items:center;border:1px solid var(--line2)}
+.qty button{background:transparent;border:0;color:var(--fg);width:28px;height:28px;cursor:pointer}
+.qty i{font-style:normal;min-width:22px;text-align:center;font-size:13px}
+.cart-empty{color:var(--muted);font-size:14px;padding:30px 0;text-align:center}
+.cart-f{padding:16px 22px 20px;border-top:1px solid var(--line2);display:grid;gap:8px}
+.cart-row{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
+.cart-row b{color:var(--fg);font-weight:500;font-variant-numeric:tabular-nums}
+.cart-row.tot{font-size:16px;color:var(--fg);margin:4px 0 8px}
+.cart-row.tot b{font-weight:900}
+/* checkout */
+.co{position:fixed;inset:0;z-index:42;display:grid;place-items:center;padding:20px max(16px,env(safe-area-inset-left,0px));overflow:auto}
+.co-in{width:min(860px,100%);background:var(--panel2);border:1px solid var(--line2);max-height:calc(100vh - 40px);overflow:auto}
+.co-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.co-sec{padding:20px 22px;display:grid;gap:8px;align-content:start;min-width:0}
+.co-sec+.co-sec{border-left:1px solid var(--line)}
+.co-sec label{font-size:12.5px;color:var(--muted);margin-top:6px}
+.co-sec input:not([type]),.co-sec input[inputmode]{background:var(--bg);border:1px solid var(--line2);color:var(--fg);padding:11px 12px;font-family:var(--body);font-size:14px}
+.co-sec input:focus{outline:1px solid var(--red);outline-offset:0}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.pay label{margin:0;cursor:pointer}
+.pay input{position:absolute;opacity:0;pointer-events:none}
+.pay span{display:block;text-align:center;padding:12px 8px;border:1px solid var(--line2);font-size:13.5px;color:var(--ti)}
+.pay input:checked+span{border-color:var(--red);color:#fff;background:rgba(214,40,46,.14)}
+.pay input:focus-visible+span{outline:1px solid var(--fg)}
+.co-sum{margin-top:12px;border-top:1px solid var(--line);padding-top:10px;display:grid;gap:6px;font-size:13.5px}
+.co-sum div{display:flex;justify-content:space-between;color:var(--muted)}
+.co-sum .tot{color:var(--fg);font-weight:900;font-size:16px}
+.agree{display:flex;gap:8px;align-items:center;margin-top:12px!important;color:var(--ti)!important}
+.co-err{color:#ff8a8e;font-size:13px;min-height:18px}
+.co-done{padding:40px 26px;text-align:center;display:grid;gap:10px;justify-items:center}
+.co-done h3{font-size:24px;font-weight:900}
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .es-wrap{justify-self:center;padding:34px 0 0}
+  .es{width:160px;height:160px}.es-t b{font-size:21px}
+  .co-grid{grid-template-columns:1fr}.co-sec+.co-sec{border-left:0;border-top:1px solid var(--line)}
+}
+@media (max-width:520px){.cartbtn{padding:8px 9px}.top .btn{display:none}}
+
+
+/* hero (simple) + tach */
+.hero .wrap{grid-template-columns:1fr auto;align-items:end}
+.hero-txt p{margin:22px 0 0;color:#c2beb7;font-size:15.5px;max-width:30em}
+.tach-wrap{display:grid;justify-items:center;gap:10px}
+.tach{position:relative;width:168px;height:168px;padding:0;border:0;background:transparent;cursor:pointer;border-radius:50%}
+.tach svg{width:100%;height:100%;overflow:visible}
+.t-arc{fill:none;stroke:rgba(232,230,225,.18);stroke-width:1.2}
+.t-red{fill:none;stroke:var(--red);stroke-width:3}
+#t-ticks line{stroke:rgba(232,230,225,.45);stroke-width:1}
+#t-ticks line.bg{stroke:rgba(232,230,225,.85);stroke-width:1.6}
+#t-ticks line.rd{stroke:var(--red)}
+#t-ticks text{font-family:var(--mono);font-size:9px;fill:rgba(232,230,225,.7);text-anchor:middle}
+#t-ticks text.rd{fill:var(--red)}
+.t-needle{stroke:var(--red);stroke-width:2.2;stroke-linecap:round;filter:drop-shadow(0 0 4px rgba(214,40,46,.7))}
+.t-hub{fill:rgba(8,8,10,.92);stroke:rgba(232,230,225,.22);stroke-width:1}
+.tach:hover .t-hub{stroke:rgba(232,230,225,.5)}
+.tach.on .t-hub{stroke:var(--red)}
+.t-c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:1px;pointer-events:none}
+.t-c b{font-family:var(--wide);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--fg)}
+.tach.on .t-c b{color:var(--red)}
+.t-c small{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.t-lb{font-size:12.5px;color:var(--muted)}
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr auto;gap:18px}
+  .tach{width:118px;height:118px}
+  .t-c b{font-size:10px}
+}
+@media (max-width:520px){
+  .hero .wrap{grid-template-columns:1fr}
+  .tach-wrap{justify-self:end}
+}
+
+
+/* mobile menu */
+.mbtn{display:none;width:40px;height:40px;background:transparent;border:1px solid var(--line2);cursor:pointer;padding:0;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.mbtn i{display:block;width:16px;height:1.5px;background:var(--fg)}
+.mnav{position:fixed;inset:0;z-index:45;background:var(--bg);display:flex;flex-direction:column;padding:calc(14px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+.mnav-h{display:flex;justify-content:space-between;align-items:center}
+.mnav nav{display:grid;margin-top:34px;border-top:1px solid var(--line)}
+.mnav .ml{font-size:22px;font-weight:700;padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.mnav .ml::after{content:"→";color:var(--red);font-weight:400}
+.mnav-f{margin-top:auto;display:grid;gap:4px;color:var(--muted);font-size:14px}
+.hero .pre{color:#e2dfd9!important;font-weight:500!important}
+.tach{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.t-c small{letter-spacing:.18em}
+@media (max-width:760px){
+  .secnav{display:none}
+  .mbtn{display:flex}
+  .top .btn{display:none}
+  :root{--navh:70px}
+  .hero{min-height:0;display:block;padding:0 0 36px}
+  .hero .bg{position:relative;height:72vw;max-height:440px;object-position:52% 40%}
+  .hero::after{inset:0 0 auto 0;height:72vw;max-height:440px;background:linear-gradient(0deg,var(--bg) 0%,rgba(6,6,7,.25) 38%,rgba(6,6,7,0) 70%)}
+  .hero .wrap{margin-top:-18px;grid-template-columns:1fr auto;align-items:center;gap:14px 10px}
+  .hero-txt{grid-column:1/-1}
+  .hero h1 .pre{font-size:15px}
+  .hero h1 .main{font-size:clamp(28px,8vw,36px)}
+  .hero-txt p{font-size:14.5px;margin-top:16px}
+  .tach-wrap{grid-column:1/-1;justify-self:stretch;grid-template-columns:auto 1fr;align-items:center;justify-items:start;gap:16px;margin-top:10px;padding-top:16px;border-top:1px solid var(--line)}
+  .tach{width:104px;height:104px}
+  .t-lb{font-family:var(--body);font-size:13.5px;letter-spacing:0;color:var(--ti)}
+}
+
+
+/* 3D unfold blueprint */
+.bp3d{perspective:1300px;perspective-origin:50% 20%;padding:10px 0 4px}
+.plate{position:relative;aspect-ratio:1090/570;transform-origin:50% 75%;will-change:transform;background:#0a0b0d;border:1px solid var(--line2)}
+.grid3d{position:absolute;inset:0;background-image:linear-gradient(rgba(232,230,225,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(232,230,225,.05) 1px,transparent 1px);background-size:4% 7.6%}
+.l-body{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.92;}
+.curtain{position:absolute;top:0;bottom:0;right:0;width:100%;background:#0a0b0d;background-image:linear-gradient(rgba(232,230,225,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(232,230,225,.05) 1px,transparent 1px);background-size:40px 40px;background-position:right top}
+.sweep{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,#fff 20%,#fff 80%,transparent);box-shadow:0 0 18px 4px rgba(255,255,255,.5),0 0 60px 10px rgba(214,40,46,.35);pointer-events:none;transition:opacity .2s}
+.l-ex{position:absolute;inset:0;width:100%;height:100%;opacity:0;will-change:transform,opacity;filter:drop-shadow(0 18px 14px rgba(0,0,0,.55))}
+.tubes .sh path{stroke:#1f2123;stroke-width:15}
+.tubes .tu path{stroke:url(#tiG);stroke-width:11}
+.tubes .hl path{stroke:rgba(255,255,255,.55);stroke-width:2}
+.tips rect{fill:#141517;stroke:#c9cbc7;stroke-width:2.5}
+.valves circle{fill:var(--red);stroke:#2a1012;stroke-width:2}
+.mtxt{font-family:var(--wide);font-weight:700;font-size:16px;fill:rgba(40,42,44,.75);text-anchor:middle;letter-spacing:2px}
+.glow path{stroke:var(--red);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9;filter:drop-shadow(0 0 6px rgba(214,40,46,.8))}
+.bp.done .glow path{animation:glowRun 1.6s ease-out forwards}
+@keyframes glowRun{to{stroke-dashoffset:0}}
+
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.swap{animation:fade .45s ease both}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+@media (max-width:960px){
+  .hero .wrap,.model,.why .pillars,.dealer .wrap,.head,.pillar.wide{grid-template-columns:1fr}
+  .brands{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:30px}
+  .sec{padding-block:64px}
+  .mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.m-a,.m-b{grid-column:span 2}
+}
+@media (max-width:520px){
+  .brands,.steps{grid-template-columns:1fr}
+  .hlogo{height:22px}
+  .box,.pillar{padding:24px 20px}
+  .spec div{grid-template-columns:80px 1fr}
+  .cmp th,.cmp td{padding:13px 14px}
+  .cmp td.k{width:84px}
+}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a href="#top" aria-label="MRG 홈"><img src="web/mrg-logo-official.png" alt="MRG Match Racing Gallop" class="hlogo"></a>
+      <div class="top-r"><button class="cartbtn" id="cartbtn" type="button" aria-label="장바구니 열기">CART <span id="cartn">0</span></button><a class="btn" href="#dealer">견적 문의</a><button class="mbtn" id="mbtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><i></i><i></i></button></div>
+    </div>
+    <nav class="secnav" aria-label="섹션 이동">
+      <a href="#why">WHY MRG</a><a href="#lineup">가격표</a><a href="#shop">파츠 샵</a><a href="#main">주력 모델</a><a href="#gallery">갤러리</a><a href="#dealer">장착 · 문의</a>
+    </nav>
+  </div>
+  <div class="heatline"></div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img class="bg" src="web/g/hero_bw.webp" alt="MRG 블랙 팁에서 배기가스가 피어오르는 포르쉐 718 후면, 흑백">
+    <div class="wrap">
+      <div class="hero-txt">
+        <h1><span class="pre">단순히 배기를 만드는 것이 아닙니다.</span><span class="main">MRG는 <em>퍼포먼스의 기준</em>을 만듭니다.</span></h1>
+        <p>정밀한 3D 스캔 기술과 티타늄 소재의 배기 라인.<br>차량의 완성도를 더욱 끌어올리는 MRG만의 배기 시스템.</p>
+      </div>
+      <div class="tach-wrap">
+        <button class="tach" id="tach" type="button" aria-label="M5 사운드 듣기">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <path class="t-arc" id="t-arc" d=""/>
+            <path class="t-red" id="t-red" d=""/>
+            <g id="t-ticks"></g>
+            <line class="t-needle" id="t-needle" x1="100" y1="100" x2="168" y2="100"/>
+            <circle class="t-hub" cx="100" cy="100" r="34"/>
+          </svg>
+          <span class="t-c"><b id="t-btn">START</b><small id="t-sub">M5 SOUND</small></span>
+        </button>
+        <div class="t-lb" id="t-lb">눌러서 M5 사운드 듣기</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec why" id="why" style="border-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="label">Why MRG</div><h2 class="h2" style="margin-top:12px">Scan. Titanium.<br>Tune.</h2></div>
+        <p>MRG 커스텀 배기는 차에 맞춰 처음부터 만듭니다. 3D 스캔으로 차량에 꼭 맞는 라인을 설계하고, 운전 성향에 맞춰 세밀하게 조율합니다.</p>
+      </div>
+      <div class="bp" id="bp">
+        <div class="bp-txt">
+          <div class="big">3D</div>
+          <h3>정밀한 3D 스캔 설계</h3>
+          <p>차량 하부를 3D로 스캔한 데이터 위에 배기 라인을 설계합니다. 파이프 경로와 머플러 위치를 그 차의 구조에 맞춰 그립니다.</p>
+          <ol class="bp-steps" id="bp-steps">
+            <li data-at=".08"><b>01</b>차체 하부 3D 스캔</li>
+            <li data-at=".38"><b>02</b>배기 라인 설계</li>
+            <li data-at=".62"><b>03</b>H-PIPE · 밸브 · 머플러 배치</li>
+            <li data-at=".88"><b>04</b>차종 전용 라인 완성</li>
+          </ol>
+        </div>
+        <figure class="bp-fig">
+          <div class="bp3d" id="bp3d">
+            <div class="plate" id="plate">
+              <div class="grid3d" aria-hidden="true"></div>
+              <img class="l-body" id="l-body" src="web/g/bp_body.webp" alt="BMW M2·M3·M4 차체 하부 3D 스캔 데이터">
+              <div class="curtain" id="curtain" aria-hidden="true"></div><div class="sweep" id="sweep" aria-hidden="true"></div>
+              <svg class="l-ex" id="l-ex" viewBox="90 30 1090 570" aria-hidden="true">
+                <defs>
+                  <linearGradient id="tiG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f2ee"/><stop offset=".45" stop-color="#b9bcb8"/><stop offset="1" stop-color="#6f7370"/></linearGradient>
+                  <linearGradient id="tiM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9e9e5"/><stop offset=".5" stop-color="#a7aaa6"/><stop offset="1" stop-color="#5f625f"/></linearGradient>
+                </defs>
+                <g class="tubes" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <g class="sh"><path d="M135,230 L335,230 C375,230 380,300 418,300 L700,300 C730,300 735,264 765,264 L885,264 C905,264 905,272 915,272 C950,272 960,206 1000,206 L1105,204"/><path d="M135,410 L330,410 C372,410 380,340 418,340 L700,340 C730,340 735,372 765,372 L885,372 C905,372 905,354 915,354 C950,354 960,428 1000,430 L1105,432"/><path d="M1050,238 C1050,236 1080,236 1105,236"/><path d="M1050,398 C1050,402 1080,400 1105,400"/></g>
+                  <g class="tu"><path d="M135,230 L335,230 C375,230 380,300 418,300 L700,300 C730,300 735,264 765,264 L885,264 C905,264 905,272 915,272 C950,272 960,206 1000,206 L1105,204"/><path d="M135,410 L330,410 C372,410 380,340 418,340 L700,340 C730,340 735,372 765,372 L885,372 C905,372 905,354 915,354 C950,354 960,428 1000,430 L1105,432"/><path d="M1050,238 C1050,236 1080,236 1105,236"/><path d="M1050,398 C1050,402 1080,400 1105,400"/></g>
+                  <g class="hl"><path d="M135,227 L335,227 C375,227 380,297 418,297 L700,297 C730,297 735,261 765,261 L885,261"/><path d="M135,407 L330,407 C372,407 380,337 418,337 L700,337 C730,337 735,369 765,369 L885,369"/></g>
+                </g>
+                <rect x="418" y="286" width="54" height="68" rx="6" fill="url(#tiM)" stroke="#3a3c3e"/>
+                <rect x="1018" y="236" width="67" height="164" rx="8" fill="url(#tiM)" stroke="#3a3c3e"/>
+                <text x="1051.5" y="322" class="mtxt" transform="rotate(90 1051.5 318)">MRG</text>
+                <g class="tips"><rect x="1105" y="191" width="46" height="26" rx="11"/><rect x="1105" y="223" width="46" height="26" rx="11"/><rect x="1105" y="387" width="46" height="26" rx="11"/><rect x="1105" y="419" width="46" height="26" rx="11"/></g>
+                <g class="valves"><circle cx="915" cy="272" r="9"/><circle cx="915" cy="354" r="9"/></g>
+                <g class="glow" fill="none" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M135,230 L335,230 C375,230 380,300 418,300 L700,300 C730,300 735,264 765,264 L885,264 C905,264 905,272 915,272 C950,272 960,206 1000,206 L1105,204"/><path pathLength="1" d="M135,410 L330,410 C372,410 380,340 418,340 L700,340 C730,340 735,372 765,372 L885,372 C905,372 905,354 915,354 C950,354 960,428 1000,430 L1105,432"/></g>
+              </svg>
+            </div>
+          </div>
+          <figcaption>실제 MRG 설계 데이터 · BMW M2 · M3 · M4 H-PIPE</figcaption>
+        </figure>
+      </div>
+      <div class="pillars">
+        <div class="pillar tit">
+          <div class="big">Ti</div>
+          <h3>주력 소재는 티타늄</h3>
+          <p>가볍고 열에 강한 티타늄을 주력으로 씁니다. 모든 라인은 SUS304로도 제작할 수 있습니다.</p>
+        </div>
+        <div class="pillar val">
+          <div class="big">₩</div>
+          <h3>고급 소재, 합리적인 가격</h3>
+          <p>국내에서 직접 설계하고 제작합니다. 고급 티타늄 배기를 합리적인 가격에 만나보세요.</p>
+        </div>
+      </div>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead><tr><th scope="col"></th><th scope="col">일반 범용 배기</th><th scope="col" class="m">MRG</th></tr></thead>
+          <tbody>
+            <tr><td class="k">설계</td><td class="o">여러 차종에 두루 맞춘 공용 설계</td><td class="m">차종별 3D 스캔 데이터로 전용 설계</td></tr>
+            <tr><td class="k">소재</td><td class="o">정해진 소재 한 가지</td><td class="m">티타늄 주력, SUS304 선택</td></tr>
+            <tr><td class="k">사운드</td><td class="o">완성품 그대로의 한 가지 소리</td><td class="m">중통 구조와 사운드 옵션을 조합해 조율</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="opts" aria-label="사운드 옵션">
+        <span><b>01</b>저음·고음의 조화</span><span><b>02</b>사운드 옵션 선택</span><span><b>03</b>티타늄 / SUS304</span><span><b>04</b>중통 Z · H · Y 파이프</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec heat" id="heat">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="label">Titanium Oxide Color</div><h2 class="h2" style="margin-top:12px">Heat-Tinted<br>Titanium</h2></div>
+        <p>티타늄은 열을 받으면 표면에 얇은 산화막이 생기고, 그 두께에 따라 골드에서 보라, 블루로 색이 바뀝니다. 한 번 올라온 색은 열이 식은 뒤에도 남습니다.</p>
+      </div>
+      <div class="heat-stage"><canvas id="heat-cv" aria-label="온도에 따라 색이 변하는 MRG 718 티타늄 배기"></canvas></div>
+      <div class="heat-ctl">
+        <span class="label">LOW</span>
+        <input type="range" id="heat-r" min="0" max="100" value="0" aria-label="배기 온도">
+        <span class="label">HIGH</span>
+      </div>
+      <p class="note" style="text-align:center">슬라이더를 움직여 보세요. 실제 색은 주행 환경과 열 조건에 따라 다르게 나타납니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="lineup">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="label">Price List · 2026</div><h2 class="h2" style="margin-top:12px">Full lineup</h2></div>
+        <div><p>티타늄 기준 가격이며, 모든 차종을 SUS304로도 제작할 수 있습니다.</p><a class="btn ghost" href="#quote" style="margin-top:16px">내 차 견적 만들기 →</a></div>
+      </div>
+      <div class="tabs" role="group" aria-label="브랜드 필터">
+        <button class="tab" id="f-all" data-f="all" aria-pressed="true">All</button>
+        <button class="tab" id="f-bmw" data-f="bmw" aria-pressed="false">BMW</button>
+        <button class="tab" id="f-por" data-f="por" aria-pressed="false">Porsche</button>
+        <button class="tab" id="f-hk" data-f="hk" aria-pressed="false">Genesis · Kia</button>
+        <button class="tab" id="f-etc" data-f="etc" aria-pressed="false">Nissan · Ferrari</button>
+      </div>
+      <div class="grid" id="grid"></div>
+      <p class="note">MRG 2026 캣백 카탈로그 기준, 단위 원. 장착비·부가세 포함 여부와 옵션 비용은 상담 때 안내드립니다.</p>
+      <details class="more" id="vehicles">
+        <summary>지원 차종 전체 보기 · 목록에 없는 차종도 상담 가능</summary>
+        <div class="brands">
+          <div class="brand"><h4>BMW</h4><p>M2 · M3 · M4 · M5 · M340i · M550i · M850i · 20i/30i(B48)</p></div>
+          <div class="brand"><h4>Porsche</h4><p>911 · 718 · Panamera · Macan · Cayenne</p></div>
+          <div class="brand"><h4>Mercedes-AMG</h4><p>AMG GT · A45 · C63 · E53 · S63 · GLA45 · GLE63 S</p></div>
+          <div class="brand"><h4>Audi</h4><p>S/RS3 ~ S/RS8 · SQ3 · SQ5 · SQ7 · SQ8</p></div>
+          <div class="brand"><h4>Hyundai · Kia</h4><p>Genesis G70 · G80 · GV70 · GV80 · Stinger · Tasman · Avante N Line · Veloster N Line</p></div>
+          <div class="brand"><h4>Ford · Chevrolet</h4><p>Mustang · Camaro</p></div>
+          <div class="brand"><h4>Infiniti · Nissan</h4><p>Q50 · GT-R R35</p></div>
+          <div class="brand"><h4>Exotic</h4><p>Ferrari · Lamborghini Huracán · Aston Martin · Bentley</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="sec quote" id="quote">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="label">Build your MRG</div><h2 class="ko2" style="font-size:clamp(26px,3.4vw,42px)">내 차 견적 만들기</h2></div>
+        <p>차종과 사양을 고르면 카탈로그 기준 가격과 문의 문장이 만들어집니다. 복사해서 웅샵 인스타그램 DM으로 보내주세요.</p>
+      </div>
+      <div class="q-grid">
+        <div class="q-steps">
+          <fieldset class="q-step"><legend><b>01</b>차종</legend><div class="q-opts" id="q-car"></div></fieldset>
+          <fieldset class="q-step"><legend><b>02</b>소재</legend><div class="q-opts" id="q-mat"></div></fieldset>
+          <fieldset class="q-step"><legend><b>03</b>중통</legend><div class="q-opts" id="q-pipe"></div></fieldset>
+          <fieldset class="q-step"><legend><b>04</b>팁</legend><div class="q-opts" id="q-tip"></div></fieldset>
+        </div>
+        <aside class="q-sum" aria-live="polite">
+          <div class="label">Your build</div>
+          <div class="q-car" id="q-o-car">차종을 선택하세요</div>
+          <dl class="q-spec" id="q-o-spec"></dl>
+          <div class="q-price"><span class="label">Catalog price</span><div class="q-pv" id="q-o-price">—</div><div class="q-pn" id="q-o-note">장착비·부가세·옵션 비용은 상담 때 안내드립니다.</div></div>
+          <label class="label" for="q-msg" style="display:block;margin-top:18px">문의 문장</label>
+          <textarea id="q-msg" readonly rows="6"></textarea>
+          <div class="q-act"><button class="btn" id="q-copy" type="button">문장 복사</button><a class="btn ghost" href="https://www.instagram.com/woong.sharp/" target="_blank" rel="noopener">웅샵 DM 열기 →</a></div>
+          <div class="q-ph">전화 문의 010-4748-3967</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec shop" id="shop">
+    <div class="wrap">
+      <div class="demo-bar">DEMO · 보여주기용 임시 페이지예요. 실제 판매와 결제는 되지 않습니다.</div>
+      <div class="head">
+        <div><div class="label">MRG Parts</div><h2 class="h2" style="margin-top:12px">Parts shop</h2></div>
+        <p>배기 팁, 밸브 컨트롤 키트 같은 MRG 순정 파츠를 따로 구매할 수 있습니다. 적용 차종은 주문 후 확인해 드립니다.</p>
+      </div>
+      <div class="sgrid" id="sgrid"></div>
+      <p class="note">표시된 가격은 화면 구성을 보여주기 위한 예시입니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="main">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="label">Main Lineup</div><h2 class="h2" style="margin-top:12px">BMW M &amp; 718</h2></div>
+        <p>MRG의 주력 라인입니다. 모델을 선택해 구성과 가격, 실제 사운드를 확인하세요.</p>
+      </div>
+      <div class="picker" role="group" aria-label="모델 선택">
+        <button class="pick" id="pk-m2" data-k="m2" aria-pressed="false">M2</button>
+        <button class="pick" id="pk-m3" data-k="m3" aria-pressed="false">M3</button>
+        <button class="pick" id="pk-m4" data-k="m4" aria-pressed="false">M4</button>
+        <button class="pick" id="pk-m5" data-k="m5" aria-pressed="true">M5</button>
+        <button class="pick por" id="pk-718" data-k="p718" aria-pressed="false">718</button>
+      </div>
+      <article class="model" id="model" aria-live="polite">
+        <div class="stage" id="m-stage"><img id="m-img" src="web/p/m5.webp" alt="BMW M5용 MRG 티타늄 배기"></div>
+        <div class="info" id="m-info"></div>
+      </article>
+    </div>
+  </section>
+
+
+  <section class="sec" id="gallery">
+    <div class="wrap">
+      <div class="head">
+        <div><div class="label">Gallery</div><h2 class="h2" style="margin-top:12px">On the road</h2></div>
+        <p>MRG 배기를 단 차들과 서울·경기 공식 장착점 웅샵의 작업입니다.</p>
+      </div>
+      <div class="mosaic">
+        <figure class="m-a"><img src="web/g/c911.webp" alt="MRG 배기를 장착한 흰색 포르쉐 911 카레라 후면"><figcaption>PORSCHE 911 CARRERA</figcaption></figure>
+        <figure class="m-b"><img src="web/g/panamera.webp" alt="MRG 번호판을 단 포르쉐 파나메라"><figcaption>PORSCHE PANAMERA</figcaption></figure>
+        <figure><img src="web/g/w718rear.webp" alt="웅샵에서 MRG 배기를 장착한 블랙 포르쉐 718"><figcaption>718 · WOONG SHOP</figcaption></figure>
+        <figure><img src="web/g/tips.webp" alt="MRG 각인 티타늄 듀얼 팁 클로즈업"><figcaption>TITANIUM TIP · PHOTO CHEN VISION</figcaption></figure>
+        <figure class="work"><img src="web/aston.webp" alt="애스턴마틴용 MRG 티타늄 풀 시스템"><figcaption>ASTON MARTIN · WOONG SHOP</figcaption></figure>
+        <figure class="work"><img src="web/gold.webp" alt="골드 마감 MRG 티타늄 배기"><figcaption>GOLD TITANIUM · WOONG SHOP</figcaption></figure>
+        <figure class="m-b"><img src="web/g/bunny.webp" alt="커스텀 차량 앞의 MRG 블랙 팁" style="object-position:50% 70%"><figcaption>CUSTOM BUILD</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dealer" id="dealer">
+    <div class="wrap">
+      <ol class="steps" aria-label="상담부터 장착까지">
+        <li><h4>상담</h4><p>차종, 연식, 원하는 사운드를 알려주세요.</p></li>
+        <li><h4>사양 선택</h4><p>소재, 중통(Z·H·Y), 팁과 옵션을 고릅니다.</p></li>
+        <li><h4>제작</h4><p>3D 스캔 데이터로 차종 전용 라인을 만듭니다.</p></li>
+        <li><h4>장착</h4><p>공식 장착점에서 장착하고 작동을 확인합니다.</p></li>
+      </ol>
+      <div class="box">
+        <div class="tag">Seoul · Gyeonggi Official Dealer</div>
+        <h3>서울·경기 총판<br>공식 장착점 웅샵</h3>
+        <p>서울·경기 지역 MRG 상담, 판매, 장착을 맡고 있습니다. 차종과 연식을 보내주시면 견적을 안내드립니다.</p>
+        <div class="rows">
+          <div class="row"><span class="label">Phone</span><span class="v" id="v-wph">010-4748-3967</span><button class="copy" id="c-wph" data-t="v-wph">COPY</button></div>
+          <div class="row"><span class="label">Instagram</span><span class="v" id="v-ig">@woong.sharp</span><button class="copy" id="c-ig" data-t="v-ig">COPY</button></div>
+          <div class="row"><span class="label">Location</span><span class="v">서울 구로구 신도림</span></div>
+        </div>
+        <a class="btn" href="https://www.instagram.com/woong.sharp/" target="_blank" rel="noopener">웅샵에 장착 문의 →</a>
+      </div>
+      <div class="box">
+        <div class="tag" style="color:var(--ti)">MRG Headquarters</div>
+        <h3>MRG 본사</h3>
+        <p>제품, 제휴, 대리점 문의는 본사로 연락해 주세요.</p>
+        <div class="rows">
+          <div class="row"><span class="label">Email</span><span class="v" id="v-em">mrgkorea123@naver.com</span><button class="copy" id="c-em" data-t="v-em">COPY</button></div>
+          <div class="row"><span class="label">Phone</span><span class="v" id="v-p1">010-3238-9392</span><button class="copy" id="c-p1" data-t="v-p1">COPY</button></div>
+          <div class="row"><span class="label">Phone</span><span class="v" id="v-p2">010-9066-1819</span><button class="copy" id="c-p2" data-t="v-p2">COPY</button></div>
+          <div class="row"><span class="label">Address</span><span class="v">경기도 포천시 소흘읍 호국로287번길 17-26, 106</span></div>
+        </div>
+        <a class="btn ghost" href="https://www.instagram.com/mrgexhaust1/" target="_blank" rel="noopener">MRG 인스타그램</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="mnav" id="mnav" hidden>
+  <div class="mnav-h"><img src="web/mrg-logo-official.png" alt="MRG" class="hlogo"><button class="x" id="mnav-x" type="button" aria-label="메뉴 닫기">×</button></div>
+  <nav aria-label="전체 메뉴"><a class="ml" href="#why">WHY MRG</a><a class="ml" href="#lineup">가격표</a><a class="ml" href="#shop">파츠 샵</a><a class="ml" href="#main">주력 모델</a><a class="ml" href="#gallery">갤러리</a><a class="ml" href="#dealer">장착 · 문의</a><a class="ml" href="#quote">내 차 견적 만들기</a></nav>
+  <div class="mnav-f"><span class="label">Seoul · Gyeonggi Dealer</span><span>웅샵 010-4748-3967</span></div>
+</div>
+<div class="ovl" id="ovl" hidden></div>
+<aside class="cart" id="cart" aria-label="장바구니" hidden>
+  <div class="cart-h"><b>장바구니</b><button type="button" class="x" id="cart-x" aria-label="장바구니 닫기">×</button></div>
+  <div class="cart-demo">DEMO · 실제 결제되지 않습니다</div>
+  <div class="cart-list" id="cart-list"></div>
+  <div class="cart-f">
+    <div class="cart-row"><span>상품 금액</span><b id="c-sub">0원</b></div>
+    <div class="cart-row"><span>배송비 (예시)</span><b id="c-ship">0원</b></div>
+    <div class="cart-row tot"><span>결제 예정 금액</span><b id="c-tot">0원</b></div>
+    <button class="btn" id="c-go" type="button" style="width:100%;justify-content:center">주문하기</button>
+  </div>
+</aside>
+<div class="co" id="co" role="dialog" aria-modal="true" aria-labelledby="co-t" hidden>
+  <div class="co-in">
+    <div class="cart-h"><b id="co-t">주문 / 결제</b><button type="button" class="x" id="co-x" aria-label="결제창 닫기">×</button></div>
+    <div class="cart-demo">DEMO · 보여주기용 결제창입니다. 입력한 정보는 어디에도 전송되지 않습니다.</div>
+    <form id="co-f" novalidate>
+      <div class="co-grid">
+        <div class="co-sec">
+          <div class="label">주문자 정보</div>
+          <label for="co-name">이름</label><input id="co-name" name="name" autocomplete="off" placeholder="홍길동">
+          <label for="co-tel">연락처</label><input id="co-tel" name="tel" autocomplete="off" inputmode="tel" placeholder="010-0000-0000">
+          <label for="co-addr">배송지</label><input id="co-addr" name="addr" autocomplete="off" placeholder="주소를 입력하세요">
+          <label for="co-memo">요청사항 · 차종</label><input id="co-memo" name="memo" autocomplete="off" placeholder="예: BMW M5 G90">
+        </div>
+        <div class="co-sec">
+          <div class="label">결제 수단</div>
+          <div class="pay" role="radiogroup" aria-label="결제 수단">
+            <label><input type="radio" name="pay" id="pay-card" value="신용카드" checked><span>신용카드</span></label>
+            <label><input type="radio" name="pay" id="pay-kakao" value="카카오페이"><span>카카오페이</span></label>
+            <label><input type="radio" name="pay" id="pay-naver" value="네이버페이"><span>네이버페이</span></label>
+            <label><input type="radio" name="pay" id="pay-bank" value="무통장입금"><span>무통장입금</span></label>
+          </div>
+          <div class="co-sum" id="co-sum"></div>
+          <label class="agree"><input type="checkbox" id="co-agree"> 주문 내용을 확인했으며 결제에 동의합니다.</label>
+          <div class="co-err" id="co-err"></div>
+          <button class="btn" type="submit" id="co-pay" style="width:100%;justify-content:center;margin-top:10px">결제하기</button>
+        </div>
+      </div>
+    </form>
+    <div class="co-done" id="co-done" hidden>
+      <div class="label">Order complete · Demo</div>
+      <h3>주문이 접수되었습니다</h3>
+      <p id="co-no"></p>
+      <p class="note">데모 화면이라 실제 주문과 결제는 이루어지지 않았습니다.</p>
+      <button class="btn ghost" type="button" id="co-close">닫기</button>
+    </div>
+  </div>
+</div>
+<a class="totop" id="totop" href="#top" aria-label="맨 위로">↑</a>
+<button class="fsound" id="fsound" type="button" aria-label="M5 사운드 듣기"><span class="pl" aria-hidden="true"></span>SOUND</button>
+
+<footer>
+  <div class="wrap"><img src="web/mrg-logo-official.png" alt="MRG"><span>© MRG Match Racing Gallop · 서울·경기 공식 장착점 웅샵</span><span>배기 튜닝은 관련 법규에 따른 튜닝 승인이 필요할 수 있습니다.</span></div>
+</footer>
+
+<script>
+const M={
+ m2:{brand:'BMW M',name:'M2',ch:'F87 · G87',img:'web/p/m2.webp',glow:'rgba(170,182,205,.26)',t:750,s:450,
+   desc:'3D 스캔 데이터로 설계한 M2 전용 라인. 저음과 고음이 조화를 이루도록 조율하고, 중통은 Z·H·Y 파이프 중 고를 수 있습니다.',
+   set:'중통 · 메인 머플러 · 가변 밸브',tips:'블랙 쿼드 팁'},
+ m3:{brand:'BMW M',name:'M3',ch:'F80 · G80',img:'web/p/m3.webp',glow:'rgba(170,182,205,.26)',t:750,s:450,
+   desc:'3D 스캔 데이터로 설계한 M3 전용 라인. 같은 MRG 배기라도 옵션 조합에 따라 원하는 사운드를 만들 수 있습니다.',
+   set:'중통 · 메인 머플러 · 가변 밸브',tips:'블랙 쿼드 팁'},
+ m4:{brand:'BMW M',name:'M4',ch:'F82 · G82 · G83',img:'web/p/m4.webp',glow:'rgba(170,182,205,.26)',t:750,s:450,
+   desc:'쿠페와 컨버터블 모두 대응하는 M4 전용 라인. 저음과 고음이 조화를 이루도록 세밀하게 조율합니다.',
+   set:'중통 · 메인 머플러 · 가변 밸브',tips:'쿼드 팁'},
+ m5:{brand:'BMW M',name:'M5',ch:'F90 · G90',img:'web/p/m5.webp',glow:'rgba(170,182,205,.26)',t:800,s:450,
+   desc:'M5 전용 티타늄 라인과 가변 밸브 컨트롤 키트 구성. 상황에 맞춰 사운드를 조절할 수 있습니다.',
+   set:'중통 · 메인 머플러 · 가변 밸브 · 컨트롤 키트',tips:'블랙 쿼드 팁',
+   sounds:[{k:'m5',src:'web/s3/m5.mp3',label:'M5 · V8 배기음',d:20}]},
+ p718:{brand:'Porsche',name:'718',ch:'GTS 4.0 · 718 Series',img:'web/718.webp',glow:'rgba(216,186,126,.28)',ask:1,
+   desc:'718 박스터 · 카이맨 전용 티타늄 센터 머플러 구성. 웅샵에서 장착한 박스터 GTS와 GT4의 실제 사운드를 들어 보세요.',
+   set:'센터 머플러 · 연결 파이프 · 테일 파이프 · 밸브 클램프',tips:'듀얼 팁 (폴리싱 · 블랙)',
+   sounds:[{k:'p718',src:'web/s3/p718.mp3',label:'718 박스터 GTS',d:7.8},{k:'gt4',src:'web/s3/gt4.mp3',label:'718 GT4',d:11.5}],
+   photos:[['web/g/w718rear.webp','웅샵에서 MRG 배기를 장착한 블랙 포르쉐 718 후면'],['web/g/w718under.webp','리프트 위 718 하부에 장착된 MRG 티타늄 배기 라인'],['web/g/w718tip.webp','MRG 블랙 팁에서 배기가스가 나오는 모습']]}
+};
+
+const PEAKS={"m5": [0.32, 0.35, 0.35, 0.77, 0.71, 0.68, 0.67, 0.67, 0.68, 0.63, 0.61, 0.53, 0.59, 0.6, 0.7, 0.48, 0.34, 0.38, 0.59, 0.66, 0.69, 0.61, 0.3, 0.32, 0.28, 0.28, 0.44, 0.24, 0.45, 0.42, 0.21, 0.19, 0.19, 0.29, 0.6, 0.48, 0.3, 0.25, 0.15, 0.24, 0.37, 0.56, 0.37, 0.41, 0.39, 0.76, 0.72, 0.74, 0.42, 0.4, 0.26, 0.27, 0.2, 0.34, 0.37, 0.72, 0.59, 0.4, 0.42, 0.37, 0.59, 0.92, 1.0, 0.45], "p718": [0.08, 0.08, 0.08, 0.09, 0.1, 0.08, 0.08, 0.27, 0.66, 0.92, 0.45, 0.45, 0.42, 0.26, 0.2, 0.15, 0.23, 0.22, 0.79, 0.84, 0.57, 0.44, 0.75, 0.38, 0.27, 0.15, 0.1, 0.11, 0.17, 0.27, 0.2, 0.22, 0.24, 0.2, 0.13, 0.13, 0.15, 0.21, 0.63, 0.96, 0.85, 0.49, 1.0, 0.43, 0.4, 0.74, 0.78, 0.38, 0.53, 0.39, 0.21, 0.13, 0.08, 0.08, 0.08, 0.11, 0.09, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08], "gt4": [0.36, 0.88, 0.9, 0.54, 0.67, 0.23, 0.17, 0.12, 0.22, 0.24, 0.17, 0.14, 0.1, 0.17, 0.1, 0.6, 0.92, 0.74, 0.57, 0.46, 0.32, 0.27, 0.17, 0.41, 0.34, 0.41, 0.33, 0.27, 0.28, 0.18, 0.12, 0.27, 0.81, 0.96, 0.56, 0.41, 0.2, 0.15, 0.1, 0.17, 0.17, 0.1, 0.1, 0.08, 0.1, 0.08, 0.08, 0.12, 0.72, 0.94, 0.69, 1.0, 0.26, 0.25, 0.1, 0.15, 0.13, 0.1, 0.21, 0.11, 0.11, 0.12, 0.08, 0.08]};
+const fmt=t=>`0:${String(Math.floor(t)).padStart(2,'0')}`;
+function soundHTML(list){return `<div class="snd"><div class="label">Sound preview</div>${list.map(s=>`<div class="sp" data-src="${s.src}"><button class="play" type="button" aria-label="${s.label} 재생"><span class="ic"></span></button><div class="sw"><div class="lb"><span>${s.label}</span><span class="tm">${fmt(s.d)}</span></div><div class="bars" aria-hidden="true">${PEAKS[s.k].map(v=>`<i style="height:${Math.round(v*100)}%"></i>`).join('')}</div></div></div>`).join('')}<div class="snd-note">이어폰이나 스피커로 들으면 더 잘 들려요.</div></div>`}
+const audio=new Audio(); audio.preload='none'; let cur=null;
+const stEl=()=>document.getElementById('m-stage');
+function resetSp(sp){if(!sp)return;sp.classList.remove('on');sp.querySelectorAll('.bars i').forEach(b=>b.classList.remove('f'))}
+function stopSound(){try{audio.pause()}catch(e){} resetSp(cur); cur=null; const st=stEl(); if(st)st.classList.remove('vid')}
+function toggleSound(sp){
+  if(cur===sp&&!audio.paused){audio.pause();return}
+  if(cur!==sp){resetSp(cur);cur=sp;audio.src=sp.dataset.src}
+  const pr=audio.play(); if(pr&&pr.catch)pr.catch(()=>{});
+}
+audio.addEventListener('play',()=>cur&&cur.classList.add('on'));
+audio.addEventListener('pause',()=>cur&&cur.classList.remove('on'));
+audio.addEventListener('ended',()=>{resetSp(cur);stEl().classList.remove('vid')});
+audio.addEventListener('waiting',()=>cur&&cur.classList.add('ld'));
+audio.addEventListener('playing',()=>cur&&cur.classList.remove('ld'));
+(function tick(){if(cur&&!audio.paused&&audio.duration){const p=audio.currentTime/audio.duration;const bars=cur.querySelectorAll('.bars i');const n=Math.ceil(p*bars.length);bars.forEach((b,i)=>b.classList.toggle('f',i<n));cur.querySelector('.tm').textContent=fmt(audio.currentTime)}requestAnimationFrame(tick)})();
+const info=document.getElementById('m-info'), img=document.getElementById('m-img'), stage=document.getElementById('m-stage');
+function show(k){
+  const m=M[k]; stopSound();
+  img.src=m.img; img.alt=`${m.brand} ${m.name}용 MRG 티타늄 배기`; stage.style.setProperty('--glow',m.glow);
+  info.innerHTML=`<div class="brandtag">${m.brand}</div><h3>${m.name}</h3><div class="chassis">${m.ch}</div>
+   <p class="desc">${m.desc}</p>
+   ${m.sounds?soundHTML(m.sounds):''}
+   <dl class="spec"><div><dt>Material</dt><dd>티타늄${m.ask?', 로우 마감':' (SUS304 선택 가능)'}</dd></div><div><dt>Set</dt><dd>${m.set}</dd></div><div><dt>Tips</dt><dd>${m.tips}</dd></div></dl>
+   <div class="pricebox"><div class="tprice"><div class="k">TITANIUM</div>${m.ask?`<div class="v" style="font-size:clamp(20px,2.2vw,26px)">가격 상담</div><div class="alt">사양에 따라 견적 안내</div>`:`<div class="v">${m.t}<small>만 원</small></div><div class="alt">SUS304 ${m.s}만 원</div>`}</div>
+   <a class="btn" href="#dealer">${m.name} 견적 문의</a></div>
+   ${m.photos?`<div class="installs"><div class="label">Installed at Woong Shop</div><div class="strip">${m.photos.map(p=>`<img src="${p[0]}" alt="${p[1]}">`).join('')}</div></div>`:''}`;
+  [img,info].forEach(el=>{el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap')});
+  document.querySelectorAll('.pick').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k));
+}
+document.querySelectorAll('.pick').forEach(b=>b.addEventListener('click',()=>show(b.dataset.k)));
+info.addEventListener('click',e=>{const b=e.target.closest('.play');if(b)toggleSound(b.closest('.sp'))});
+show('m5');
+function playMain(){show('m5');document.getElementById('main').scrollIntoView({behavior:'smooth'});const sp=info.querySelector('.sp');if(sp)toggleSound(sp)}
+document.getElementById('fsound').addEventListener('click',playMain);
+
+const P=[
+ {b:'bmw',mk:'BMW M · Main',n:'M5',s:450,t:800,img:'p/m5',feat:1},
+ {b:'bmw',mk:'BMW M · Main',n:'M4',s:450,t:750,img:'p/m4',feat:1},
+ {b:'bmw',mk:'BMW M · Main',n:'M3',s:450,t:750,img:'p/m3',feat:1},
+ {b:'bmw',mk:'BMW M · Main',n:'M2',s:450,t:750,img:'p/m2',feat:1},
+ {b:'por',mk:'Porsche · Main',n:'718 GTS 4.0',ask:1,img:'718',feat:1},
+ {b:'bmw',mk:'BMW M Performance',n:'M850i',s:450,t:700,img:'p/m850i'},
+ {b:'bmw',mk:'BMW M Performance',n:'M340i · 240i · 440i',s:250,t:450,img:'p/m340i'},
+ {b:'bmw',mk:'BMW M Performance',n:'M340i Touring',s:250,t:450,img:'p/m340t'},
+ {b:'bmw',mk:'BMW · B48 엔진',n:'20i · 30i',s:270,t:500,img:null},
+ {b:'etc',mk:'Nissan',n:'GT-R R35',s:450,t:700,img:'p/gtr'},
+ {b:'etc',mk:'Ferrari',n:'458',ask:1,img:'p/f458'},
+ {b:'hk',mk:'Kia',n:'Stinger 3.3',s:250,t:450,img:'p/st33'},
+ {b:'hk',mk:'Kia',n:'Stinger 2.5 · 2.0',s:230,t:400,img:'p/st25a'},
+ {b:'hk',mk:'Genesis',n:'G70 3.3',s:250,t:450,img:'p/g70_33'},
+ {b:'hk',mk:'Genesis',n:'G70 2.5 · 2.0',s:230,t:400,img:'p/g70_25'}
+];
+const grid=document.getElementById('grid');
+grid.innerHTML=P.map(p=>`<article class="card${p.feat?' feat':''}" data-b="${p.b}">
+  <div class="ph">${p.feat?'<span class="flag">MAIN</span>':''}${p.img?`<img src="web/${p.img}.webp" alt="${p.mk} ${p.n}용 MRG 배기">`:`<div class="tbd label">사진 준비 중</div>`}</div>
+  <div class="bd"><div><div class="mk">${p.mk}</div><h3>${p.n}</h3></div>
+  <div class="pr">${p.ask?`<span class="t" style="font-size:15px">가격 상담</span><span class="s">사양별 견적</span>`:`<span><span class="k">TITANIUM</span><span class="t">${p.t}<small>만 원</small></span></span><span class="s"><span class="k">SUS304</span>${p.s}만 원</span>`}</div></div></article>`).join('');
+const tabs=[...document.querySelectorAll('.tab')];
+tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.setAttribute('aria-pressed',x===t));const f=t.dataset.f;grid.querySelectorAll('.card').forEach(c=>c.hidden=!(f==='all'||c.dataset.b===f))}));
+
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{const el=document.getElementById(b.dataset.t);const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)};try{navigator.clipboard.writeText(el.textContent).then(()=>{b.textContent='COPIED';setTimeout(()=>b.textContent='COPY',1400)},sel)}catch(e){sel()}}));
+
+
+/* ===== hero tachometer: hold to rev ===== */
+(function(){
+  const btn=document.getElementById('tach'), needle=document.getElementById('t-needle'), lbl=document.getElementById('t-btn'), sub=document.getElementById('t-sub'), lb=document.getElementById('t-lb');
+  const C=100, R=80, A0=135, SW=270, MAX=8, HOLD=1000;
+  const pt=(deg,r)=>{const a=deg*Math.PI/180;return [C+r*Math.cos(a),C+r*Math.sin(a)]};
+  const arc=(d0,d1,r)=>{const [x0,y0]=pt(d0,r),[x1,y1]=pt(d1,r);return `M${x0.toFixed(1)},${y0.toFixed(1)} A${r},${r} 0 ${d1-d0>180?1:0} 1 ${x1.toFixed(1)},${y1.toFixed(1)}`};
+  const ang=v=>A0+v/MAX*SW;
+  document.getElementById('t-arc').setAttribute('d',arc(A0,A0+SW,R));
+  document.getElementById('t-red').setAttribute('d',arc(ang(6.5),A0+SW,R));
+  let tk='';
+  for(let i=0;i<=MAX*5;i++){const v=i/5, big=i%5===0, [x0,y0]=pt(ang(v),R-2), [x1,y1]=pt(ang(v),R-(big?14:7));
+    tk+=`<line x1="${x0.toFixed(1)}" y1="${y0.toFixed(1)}" x2="${x1.toFixed(1)}" y2="${y1.toFixed(1)}" class="${v>=6.5?'rd':''} ${big?'bg':''}"/>`;
+    if(big){const [tx,ty]=pt(ang(v),R-26);tk+=`<text x="${tx.toFixed(1)}" y="${(ty+3.5).toFixed(1)}" class="${v>=6.5?'rd':''}">${v}</text>`}}
+  document.getElementById('t-ticks').innerHTML=tk;
+  let rpm=0, holding=false, t0=0, fired=false;
+  const playingM5=()=>!audio.paused&&!audio.muted&&audio.src.includes('m5');
+  function fire(){ fired=true; holding=false; audio.muted=false; show('m5'); const sp=info.querySelector('.sp'); if(sp){cur=null;toggleSound(sp)} }
+  btn.addEventListener('click',()=>{ if(playingM5()){stopSound();return} fire() });
+  const setUI=()=>{const on=playingM5();btn.classList.toggle('on',on);lbl.textContent=on?'STOP':'START';sub.textContent=on?'TAP':'M5 SOUND';lb.textContent=on?'M5 · V8 사운드 재생 중':'눌러서 M5 사운드 듣기'};
+  ['play','pause','ended','volumechange'].forEach(ev=>audio.addEventListener(ev,setUI));
+  (function tick(now){
+    let target=0;
+    if(playingM5()&&audio.duration){const pk=PEAKS.m5, i=Math.min(pk.length-1,Math.floor(audio.currentTime/audio.duration*pk.length)); target=1.1+pk[i]*6.4}
+    rpm+=(target-rpm)*(target>rpm?.2:.06);
+    needle.setAttribute('transform',`rotate(${ang(rpm)} ${C} ${C})`);
+    btn.classList.toggle('red',rpm>=6.5);
+    requestAnimationFrame(tick);
+  })(performance.now());
+})();
+
+/* ===== blueprint: 3D unfold ===== */
+(function(){
+  const bp=document.getElementById('bp'); if(!bp)return;
+  const plate=document.getElementById('plate'), body=document.getElementById('l-body'), sweep=document.getElementById('sweep'), ex=document.getElementById('l-ex'), steps=bp.querySelectorAll('.bp-steps li');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cl=v=>Math.max(0,Math.min(1,v)), ease=t=>1-Math.pow(1-t,3);
+  function upd(){
+    const r=bp.getBoundingClientRect(), vh=innerHeight;
+    const p=reduce?1:cl((vh*.98-r.top)/(r.height*1.0+vh*.4));
+    const rx=62*(1-ease(cl(p/.8))), rz=-8*(1-ease(cl(p/.8)));
+    plate.style.transform=`rotateX(${rx.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg)`;
+    const rev=ease(cl(p/.34));
+    document.getElementById('curtain').style.width=`${(100-rev*100).toFixed(2)}%`;
+    sweep.style.left=`${(rev*100).toFixed(2)}%`; sweep.style.opacity=(rev>0&&rev<1)?1:0;
+    const drop=ease(cl((p-.32)/.34));
+    ex.style.opacity=cl((p-.28)/.08).toFixed(3);
+    ex.style.transform=`translateY(${(-(1-drop)*60).toFixed(1)}px) scale(${(1+(1-drop)*.05).toFixed(3)})`;
+    ex.style.filter=`drop-shadow(0 ${(18+(1-drop)*40).toFixed(0)}px ${(14+(1-drop)*24).toFixed(0)}px rgba(0,0,0,${(.55+(1-drop)*.25).toFixed(2)}))`;
+    bp.classList.toggle('done',p>=.88);
+    steps.forEach(li=>li.classList.toggle('on',p>=+li.dataset.at));
+  }
+  addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+})();
+
+/* ===== heat tint ===== */
+(function(){
+  const cv=document.getElementById('heat-cv'), rg=document.getElementById('heat-r'); if(!cv)return;
+  const img=new Image(); img.src='web/718.webp';
+  let base=null, W=0, H=0, ctx=null, out=null, mask=null, lum=null;
+  const stops=[[0,[0,0,0],0],[.3,[214,172,88],.75],[.55,[176,112,72],.85],[.75,[124,86,160],.9],[1,[62,96,196],.92]];
+  function pal(h){for(let i=1;i<stops.length;i++){if(h<=stops[i][0]){const a=stops[i-1],b=stops[i],u=(h-a[0])/(b[0]-a[0]);return [a[1].map((c,j)=>c+(b[1][j]-c)*u),a[2]+(b[2]-a[2])*u]}}return [stops[4][1],stops[4][2]]}
+  img.onload=()=>{
+    W=Math.min(1000,img.naturalWidth); H=Math.round(img.naturalHeight*W/img.naturalWidth); cv.width=W; cv.height=H;
+    ctx=cv.getContext('2d',{willReadFrequently:true}); ctx.drawImage(img,0,0,W,H);
+    try{base=ctx.getImageData(0,0,W,H)}catch(e){return}
+    out=ctx.createImageData(W,H); mask=new Float32Array(W*H); lum=new Float32Array(W*H);
+    const d=base.data;
+    for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=y*W+x,o=i*4;const r=d[o],g=d[o+1],b=d[o+2],a=d[o+3];
+      lum[i]=(r+g+b)/765;
+      const tip=(x/W>.27&&x/W<.72&&y/H>.42);
+      const grey=Math.abs(r-b)<28&&Math.abs(r-g)<28;
+      // 위치마다 열이 조금씩 다르게: 파이프 입구 쪽(바깥 위)이 더 뜨겁게
+      const hx=Math.abs(x/W-.5)*2, hy=1-y/H; mask[i]=(a>10&&grey&&!tip)?(.72+.28*hx*(.6+.4*hy)):0;}
+    draw(0);
+  };
+  function draw(t){
+    if(!base)return; const d=base.data,o2=out.data;
+    for(let i=0;i<W*H;i++){const o=i*4,m=mask[i];
+      if(m===0||t===0){o2[o]=d[o];o2[o+1]=d[o+1];o2[o+2]=d[o+2];o2[o+3]=d[o+3];continue}
+      const h=Math.min(1,t*m); const [c,st]=pal(h); const L=lum[i]*1.45, k=st*Math.min(1,h*2.2);
+      o2[o]=d[o]*(1-k)+c[0]*L*k; o2[o+1]=d[o+1]*(1-k)+c[1]*L*k; o2[o+2]=d[o+2]*(1-k)+c[2]*L*k; o2[o+3]=d[o+3];}
+    ctx.putImageData(out,0,0);
+    const [gc]=pal(Math.min(1,t)); cv.parentElement.style.setProperty('--hg',t>0?`rgba(${gc.map(Math.round).join(',')},.3)`:'rgba(200,205,215,.18)');
+  }
+  let q=0; rg.addEventListener('input',()=>{cancelAnimationFrame(q);q=requestAnimationFrame(()=>draw(rg.value/100))});
+})();
+
+/* ===== quote builder ===== */
+(function(){
+  const cars=P.map(p=>({...p})).concat([{b:'por',mk:'Porsche',n:'718 GT4',ask:1}]);
+  const G={bmw:'BMW',por:'PORSCHE',hk:'GENESIS · KIA',etc:'NISSAN · FERRARI'};
+  const st={car:null,mat:'티타늄',pipe:'추천받기',tip:'추천받기'};
+  const elC=document.getElementById('q-car'), elM=document.getElementById('q-mat'), elP=document.getElementById('q-pipe'), elT=document.getElementById('q-tip');
+  let html='',last='';
+  const order=['bmw','por','hk','etc'];
+  order.forEach(g=>{html+=`<div class="grp">${G[g]}</div>`;cars.filter(c=>c.b===g).forEach((c,i)=>{html+=`<button type="button" id="qc-${g}-${i}" data-n="${c.n}" aria-pressed="false">${c.n}</button>`})});
+  elC.innerHTML=html;
+  const opt=(el,key,list)=>{el.innerHTML=list.map((v,i)=>`<button type="button" id="q-${key}-${i}" data-v="${v}" aria-pressed="${st[key]===v}">${v}</button>`).join('');
+    el.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st[key]=b.dataset.v;el.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()})};
+  opt(elM,'mat',['티타늄','SUS304']); opt(elP,'pipe',['Z 파이프','H 파이프','Y 파이프','추천받기']); opt(elT,'tip',['블랙','폴리싱','추천받기']);
+  elC.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;st.car=cars.find(c=>c.n===b.dataset.n);elC.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+  function render(){
+    const c=st.car;
+    document.getElementById('q-o-car').textContent=c?`${c.mk.split(' · ')[0]} ${c.n}`:'차종을 선택하세요';
+    document.getElementById('q-o-spec').innerHTML=[['소재',st.mat],['중통',st.pipe],['팁',st.tip]].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+    let price='—',pt='';
+    if(c){ if(c.ask){price='가격 상담';pt='가격 상담'} else {const v=st.mat==='티타늄'?c.t:c.s; price=`${v}<small>만 원</small>`; pt=`${v}만 원`} }
+    document.getElementById('q-o-price').innerHTML=price;
+    document.getElementById('q-msg').value=c?`[MRG 견적 문의]\n차종: ${c.mk.split(' · ')[0]} ${c.n}\n소재: ${st.mat}\n중통: ${st.pipe}\n팁: ${st.tip}\n카탈로그 가격: ${pt}\n\n장착 가능한 일정과 최종 견적 부탁드립니다.`:'';
+  }
+  render();
+  document.getElementById('q-copy').addEventListener('click',function(){const ta=document.getElementById('q-msg');if(!ta.value){ta.value='차종을 먼저 선택해 주세요.';return}
+    const b=this;const sel=()=>{ta.focus();ta.select()};try{navigator.clipboard.writeText(ta.value).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='문장 복사',1500)},sel)}catch(e){sel()}});
+})();
+
+
+/* ===== parts shop (demo) ===== */
+(function(){
+  const S=[
+    {id:'tip_black',mk:'TIP',n:'MRG 블랙 배기 팁 · 2EA',d:'MRG 각인 블랙 팁. 차종별 지름 확인 후 출고',p:380000},
+    {id:'tip_polish',mk:'TIP',n:'MRG 폴리싱 배기 팁 · 2EA',d:'유광 폴리싱 마감 팁',p:320000},
+    {id:'kit',mk:'VALVE CONTROL',n:'가변 밸브 컨트롤 키트',d:'컨트롤 모듈 · 리모컨 · 스마트키 풀세트',p:590000},
+    {id:'module',mk:'VALVE CONTROL',n:'밸브 컨트롤 모듈 · 단품',d:'가변 밸브 제어용 모듈',p:350000},
+    {id:'fob',mk:'VALVE CONTROL',n:'MRG 스마트키 리모컨 · 단품',d:'밸브 열림·닫힘을 원격으로 조작',p:120000},
+    {id:'clamp',mk:'HARDWARE',n:'배기 밴드 클램프',d:'파이프 연결용 스테인리스 클램프',p:35000}
+  ];
+  const won=v=>v.toLocaleString('ko-KR')+'원';
+  const grid=document.getElementById('sgrid');
+  grid.innerHTML=S.map(x=>`<article class="sc"><div class="ph"><img src="web/shop/${x.id}.webp" alt="${x.n}"></div><div class="bd"><div class="mk">${x.mk}</div><h3>${x.n}</h3><p>${x.d}</p><div class="pr"><b>${won(x.p)}<small>예시</small></b><button class="add" type="button" id="add-${x.id}" data-id="${x.id}">담기</button></div></div></article>`).join('');
+  const cart={}; const $=id=>document.getElementById(id);
+  const ovl=$('ovl'), drawer=$('cart'), co=$('co');
+  function totals(){const sub=Object.entries(cart).reduce((a,[k,q])=>a+S.find(x=>x.id===k).p*q,0);const ship=sub>0&&sub<500000?3000:0;return {sub,ship,tot:sub+ship}}
+  function render(){
+    const n=Object.values(cart).reduce((a,b)=>a+b,0); $('cartn').textContent=n;
+    const L=$('cart-list');
+    L.innerHTML=n?Object.entries(cart).map(([k,q])=>{const x=S.find(i=>i.id===k);return `<div class="ci"><img src="web/shop/${k}.webp" alt=""><div><b>${x.n}</b><span>${won(x.p*q)}</span></div><div class="qty"><button type="button" data-k="${k}" data-d="-1" aria-label="수량 줄이기">−</button><i>${q}</i><button type="button" data-k="${k}" data-d="1" aria-label="수량 늘리기">+</button></div></div>`}).join(''):'<div class="cart-empty">장바구니가 비어 있어요.</div>';
+    const t=totals(); $('c-sub').textContent=won(t.sub); $('c-ship').textContent=t.ship?won(t.ship):(t.sub?'무료':'0원'); $('c-tot').textContent=won(t.tot);
+    $('c-go').disabled=!n; $('c-go').style.opacity=n?1:.5;
+  }
+  function open(el){ovl.hidden=false;el.hidden=false}
+  function closeAll(){ovl.hidden=true;drawer.hidden=true;co.hidden=true}
+  grid.addEventListener('click',e=>{const b=e.target.closest('.add');if(!b)return;cart[b.dataset.id]=(cart[b.dataset.id]||0)+1;render();b.textContent='담김 ✓';setTimeout(()=>b.textContent='담기',1200);open(drawer)});
+  $('cart-list').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const k=b.dataset.k;cart[k]=(cart[k]||0)+(+b.dataset.d);if(cart[k]<=0)delete cart[k];render()});
+  $('cartbtn').addEventListener('click',()=>{render();open(drawer)});
+  $('cart-x').addEventListener('click',closeAll); ovl.addEventListener('click',closeAll); $('co-x').addEventListener('click',closeAll); $('co-close').addEventListener('click',closeAll);
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+  $('c-go').addEventListener('click',()=>{
+    if(!Object.keys(cart).length)return; drawer.hidden=true; $('co-f').hidden=false; $('co-done').hidden=true; $('co-err').textContent='';
+    const t=totals(); $('co-sum').innerHTML=Object.entries(cart).map(([k,q])=>{const x=S.find(i=>i.id===k);return `<div><span>${x.n} × ${q}</span><span>${won(x.p*q)}</span></div>`}).join('')+`<div><span>배송비 (예시)</span><span>${t.ship?won(t.ship):'무료'}</span></div><div class="tot"><span>결제 예정 금액</span><span>${won(t.tot)}</span></div>`;
+    open(co);
+  });
+  $('co-f').addEventListener('submit',e=>{
+    e.preventDefault();
+    const miss=[['co-name','이름'],['co-tel','연락처'],['co-addr','배송지']].filter(([id])=>!$(id).value.trim()).map(x=>x[1]);
+    if(miss.length){$('co-err').textContent=`${miss.join(', ')}을(를) 입력해 주세요.`;return}
+    if(!$('co-agree').checked){$('co-err').textContent='주문 내용 확인에 동의해 주세요.';return}
+    const pay=document.querySelector('input[name="pay"]:checked').value;
+    $('co-f').hidden=true; $('co-done').hidden=false;
+    $('co-no').textContent=`주문번호 MRG-DEMO-${String(Date.now()).slice(-6)} · ${pay} · ${won(totals().tot)}`;
+    Object.keys(cart).forEach(k=>delete cart[k]); render(); $('co-f').reset();
+  });
+  render();
+})();
+
+/* 모바일 메뉴 */
+(function(){const m=document.getElementById('mnav'),b=document.getElementById('mbtn');
+  const close=()=>{m.hidden=true;b.setAttribute('aria-expanded','false');document.body.style.overflow=''};
+  b.addEventListener('click',()=>{m.hidden=false;b.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'});
+  document.getElementById('mnav-x').addEventListener('click',close); m.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+  addEventListener('keydown',e=>{if(e.key==='Escape')close()});})();
+/* 섹션 메뉴 하이라이트 + 맨 위로 버튼 */
+const links=[...document.querySelectorAll('.secnav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const totop=document.getElementById('totop');
+function onScroll(){
+  const y=window.scrollY+140; let cur=-1;
+  secs.forEach((s,i)=>{if(s&&s.offsetTop<=y)cur=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===cur));
+  const on=links[cur]; if(on){const nav=on.parentElement;const l=on.offsetLeft-nav.offsetLeft;if(l<nav.scrollLeft||l+on.offsetWidth>nav.scrollLeft+nav.clientWidth)nav.scrollTo({left:l-16,behavior:'smooth'})}
+  totop.classList.toggle('show',window.scrollY>600);
+  document.getElementById('fsound').classList.toggle('show',window.scrollY>600);
+}
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+</script>
+
+</body>
+</html>
